@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <textarea id="txt" name="name" rows="8" cols="80" onfocus="startAgain()">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+    <!-- <button type="button" name="button" onclick="startAgain()">Start</button> -->
+    <button type="button" name="button" onclick="setRange()">Set Range</button>
+    <script>
+    //set selection range
+    let txt = document.getElementById('txt')
+    let txtValue = txt.value
+    let stop
+    let start = 0
+    let end = 1
+    console.log(txtValue.length);
+    function startAgain() {
+      start = 0
+      end = 1
+      txt.focus()
+      txt.setSelectionRange(0, 1)
+    }
+
+    function setRange() {
+      start++
+      end++
+      txt.focus()
+      txt.setSelectionRange(start, end)
+      let timeout =  setTimeout(function() {setRange()}, 100)
+      if (start === txtValue.length) {
+        clearTimeout(timeout)
+      }
+      console.log(start);
+      console.log(txtValue.length);
+    }
+
+
+</script>
+  </body>
+</html>
